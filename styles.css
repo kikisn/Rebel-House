@@ -329,8 +329,8 @@ nav a:hover {
     }
     
     .nav-left .btn-outline {
-        border-color: var(--color-white);
-        color: var(--color-white);
+        border-color: var(--color-white)!important;
+        color: var(--color-white)!important;
         padding: 12px 30px;
         font-size: 1rem;
     }
@@ -343,6 +343,8 @@ nav a:hover {
     .nav-left .btn-primary {
         padding: 12px 30px;
         font-size: 1rem;
+        background: var(--color-white)!important;
+        color: var(--color-dark-gray)!important;
     }
 }
 

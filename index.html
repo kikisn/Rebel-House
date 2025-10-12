@@ -21,31 +21,34 @@
 
     <!-- Header -->
     <header>
-      <div class="container header-inner">
-        <div class="logo">
-          <a href="#">
-            <div class="logo-placeholder">REBEL HOUSE</div>
-          </a>
-        </div>
-    
-        <div class="hamburger" id="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-    
-        <!-- Mobile Menu -->
-        <div class="nav-menu" id="nav-menu">
-          <a href="#">Home</a>
-          <a href="#">Sessions</a>
-          <a href="#">More</a>
-          <a href="#" class="btn-outline">Contact</a>
-          <a href="#" class="btn-outline">Sign in</a>
-          <a href="#" class="btn-primary">Register</a>
-        </div>
-      </div>
+        <nav class="container">
+            <div class="logo">
+                <a href="#">
+                    <div class="logo-placeholder">REBEL HOUSE</div>
+                </a>
+            </div>
+            
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <div class="nav-left" id="navMenu">
+                <a href="#">Home</a>
+                <a href="#">Sessions</a>
+                <a href="#">More</a>
+                <a href="#" class="btn-outline">Contact</a>
+                <a href="#" class="btn-outline">Sign in</a>
+                <a href="#" class="btn-primary">Register</a>
+            </div>
+            
+            <div class="nav-right">
+                <a href="#" class="btn-outline">Sign in</a>
+                <a href="#" class="btn-primary">Register</a>
+            </div>
+        </nav>
     </header>
-
 
     <!-- Hero Section -->
     <section class="hero">
@@ -376,13 +379,22 @@ window.addEventListener('resize', () => {
 updateSlider();
 
 // Hamburger menu
-  const hamburger = document.getElementById('hamburger');
-  const navMenu = document.getElementById('nav-menu');
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('navMenu');
 
-  hamburger.addEventListener('click', () => {
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
     navMenu.classList.toggle('active');
-  });
+});
 
+// Close menu when clicking on a link
+const navLinks = navMenu.querySelectorAll('a');
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+    });
+});
 </script>
 </body>
 </html>

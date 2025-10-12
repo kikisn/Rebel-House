@@ -329,64 +329,65 @@
         </div>
     </footer>
 
-    <script>
-// Instructor Slider Functionality
-const instructorSlider = document.querySelector('.instructor-slider');
-const prevBtn = document.querySelector('.prev-btn');
-const nextBtn = document.querySelector('.next-btn');
+<script>
+// Instructor Slider - Show 3 at a time
+const sliderTrack = document.querySelector('.instructor-slider-track');
+const prevBtn = document.querySelector('.prev-instructor');
+const nextBtn = document.querySelector('.next-instructor');
 
-let currentIndex = 0;
-const instructorCards = document.querySelectorAll('.instructor-card');
-const totalInstructors = instructorCards.length;
+let currentSlide = 0;
+const totalSlides = 6;
 
-// Function to get cards per view based on screen size
-function getCardsPerView() {
+function getSlidesVisible() {
     if (window.innerWidth <= 768) return 1;
     if (window.innerWidth <= 1024) return 2;
     return 3;
 }
 
-// Update slider position
 function updateSlider() {
-    const cardsPerView = getCardsPerView();
-    const maxIndex = totalInstructors - cardsPerView;
+    const slidesVisible = getSlidesVisible();
+    const maxSlide = totalSlides - slidesVisible;
     
-    // Ensure index is within bounds
-    if (currentIndex < 0) currentIndex = 0;
-    if (currentIndex > maxIndex) currentIndex = maxIndex;
+    // Keep currentSlide in bounds
+    if (currentSlide < 0) currentSlide = 0;
+    if (currentSlide > maxSlide) currentSlide = maxSlide;
     
-    // Calculate translateX based on card width and gap
-    const cardWidth = instructorCards[0].offsetWidth;
-    const gap = 40;
-    const translateX = -(currentIndex * (cardWidth + gap));
+    // Calculate the translate percentage
+    const slideWidth = 100 / slidesVisible;
+    const translateX = -(currentSlide * slideWidth);
     
-    instructorSlider.style.transform = `translateX(${translateX}px)`;
-    instructorSlider.style.transition = 'transform 0.5s ease';
+    sliderTrack.style.transform = `translateX(${translateX}%)`;
+    
+    // Update button states
+    prevBtn.disabled = currentSlide === 0;
+    nextBtn.disabled = currentSlide >= maxSlide;
 }
 
-// Next button
 nextBtn.addEventListener('click', () => {
-    const cardsPerView = getCardsPerView();
-    const maxIndex = totalInstructors - cardsPerView;
+    const slidesVisible = getSlidesVisible();
+    const maxSlide = totalSlides - slidesVisible;
     
-    if (currentIndex < maxIndex) {
-        currentIndex++;
+    if (currentSlide < maxSlide) {
+        currentSlide++;
         updateSlider();
     }
 });
 
-// Previous button
 prevBtn.addEventListener('click', () => {
-    if (currentIndex > 0) {
-        currentIndex--;
+    if (currentSlide > 0) {
+        currentSlide--;
         updateSlider();
     }
 });
 
-// Reset on window resize
+// Reset on resize
+let resizeTimer;
 window.addEventListener('resize', () => {
-    currentIndex = 0;
-    updateSlider();
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+        currentSlide = 0;
+        updateSlider();
+    }, 250);
 });
 
 // Initialize

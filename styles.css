@@ -156,7 +156,7 @@ p {
 
 /* Transparent Header */
 header {
-    background: var(--color-dark-gray);
+    background: var(--color-white);
     padding: 20px 0;
     position: relative;
     width: 100%;
@@ -179,7 +179,7 @@ nav {
 }
 
 nav a {
-    color: var(--color-white);
+    color: var(--color-dark-gray);
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
@@ -329,8 +329,8 @@ nav a:hover {
     }
     
     .nav-left .btn-outline {
-        border-color: var(--color-white)!important;
-        color: var(--color-white)!important;
+        border-color: var(--color-white);
+        color: var(--color-white);
         padding: 12px 30px;
         font-size: 1rem;
     }
@@ -343,8 +343,8 @@ nav a:hover {
     .nav-left .btn-primary {
         padding: 12px 30px;
         font-size: 1rem;
-        background: var(--color-white)!important;
-        color: var(--color-dark-gray)!important;
+        background: var(--color-white);
+        color: var(--color-dark-gray);
     }
 }
 

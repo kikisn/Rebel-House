@@ -156,7 +156,7 @@ p {
 
 /* Transparent Header */
 header {
-    background: transparent;
+    background: var(--color-dark-gray);
     padding: 20px 0;
     position: relative;
     width: 100%;
@@ -233,7 +233,7 @@ nav a:hover {
     display: block;
     height: 3px;
     width: 100%;
-    background: var(--color-tan);
+    background: var(--color-white);
     border-radius: 2px;
     transition: all 0.3s ease;
 }
@@ -257,11 +257,16 @@ nav a:hover {
     align-items: center;
 }
 
+/* Hide mobile-only items on desktop */
+.mobile-only {
+    display: none;
+}
+
 /* Mobile Styles */
 @media (max-width: 768px) {
     header {
         position: relative;
-        background: transparent;
+        background: var(--color-dark-gray);
     }
     
     nav {
@@ -287,7 +292,7 @@ nav a:hover {
         font-size: 0.8rem;
     }
     
-    .nav-left, .nav-right {
+    .nav-left {
         position: fixed;
         top: 0;
         left: 0;
@@ -311,6 +316,11 @@ nav a:hover {
         display: none;
     }
     
+    /* Show mobile-only items in mobile menu */
+    .mobile-only {
+        display: inline-block;
+    }
+    
     .nav-left a {
         color: var(--color-white);
         font-size: 1.2rem;
@@ -328,6 +338,11 @@ nav a:hover {
     .nav-left .btn-outline:hover {
         background: var(--color-white);
         color: var(--color-dark-gray);
+    }
+    
+    .nav-left .btn-primary {
+        padding: 12px 30px;
+        font-size: 1rem;
     }
 }
 

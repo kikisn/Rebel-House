@@ -216,16 +216,6 @@ nav a:hover {
     transform: scale(1.02);
 }
 
-/* Make header background transparent */
-header {
-  background: transparent;
-  padding: 20px 0;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  box-shadow: none;
-}
-
 /* Hamburger Icon */
 .hamburger {
   display: none;

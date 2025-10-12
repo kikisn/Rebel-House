@@ -336,6 +336,54 @@ nav a:hover {
     font-size: 1.05rem;
 }
 
+/* Instructor Slider - Wireframe Layout */
+.instructor-slider-container {
+    position: relative;
+    margin: 50px 0;
+    overflow: hidden;
+}
+
+.instructor-slider-track {
+    display: grid;
+    grid-template-columns: repeat(6, calc(33.333% - 27px));
+    gap: 40px;
+    transition: transform 0.6s ease;
+}
+
+.instructor-slide {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+.instructor-image-box {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: linear-gradient(135deg, var(--color-beige), var(--color-tan));
+}
+
+.instructor-text {
+    background: var(--color-dark-gray);
+    padding: 30px;
+    color: var(--color-white);
+}
+
+.instructor-text h5 {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    color: var(--color-white);
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.instructor-text p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin: 0;
+    color: var(--color-white);
+}
+
 /* Instructor Slider Navigation - Below Cards */
 .instructor-slider-nav {
     display: flex;
@@ -404,6 +452,56 @@ nav a:hover {
     }
     
     .instructor-text {
+        padding: 25px;
+    }
+}
+
+/* Slider Controls */
+.slider-controls {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.slider-btn {
+    width: 50px;
+    height: 50px;
+    border: 2px solid var(--color-dark-green);
+    background: transparent;
+    color: var(--color-dark-green);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider-btn:hover {
+    background: var(--color-dark-green);
+    color: var(--color-white);
+}
+
+/* Responsive Instructor Slider */
+@media (max-width: 1024px) {
+    .instructor-slider {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .instructor-slider-wrapper {
+        padding: 0;
+    }
+    
+    .instructor-slider {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .instructor-content {
         padding: 25px;
     }
 }

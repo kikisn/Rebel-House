@@ -156,11 +156,18 @@ p {
 
 /* Transparent Header */
 header {
-background: transparent;
-padding: 20px 0;
-position: relative; /* Changed from sticky to relative */
-z-index: 1000;
-box-shadow: none;
+  background: transparent;
+  padding: 20px 0;
+  position: relative;
+  z-index: 1000;
+  box-shadow: none;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
 }
 
 nav {
@@ -195,18 +202,16 @@ transform: translateX(-50%);
 }
 
 .logo-placeholder {
-width: 180px;
-height: 60px;
-background: linear-gradient(135deg, var(--color-dark-green), var(--color-tan));
-display: flex;
-align-items: center;
-justify-content: center;
-color: var(--color-white);
-font-family: var(--font-heading);
-font-size: 0.9rem;
-letter-spacing: 2px;
-transition: all 0.3s ease;
-
+  width: 180px;
+  height: 60px;
+  background: linear-gradient(135deg, var(--color-dark-green), var(--color-tan));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  letter-spacing: 2px;
 }
 
 
@@ -215,7 +220,7 @@ transition: all 0.3s ease;
     transform: scale(1.02);
 }
 
-/* Hamburger Icon */
+/* Hamburger menu */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -223,10 +228,10 @@ transition: all 0.3s ease;
   width: 25px;
   height: 18px;
   cursor: pointer;
+  z-index: 2000;
 }
 
 .hamburger span {
-  display: block;
   height: 3px;
   width: 100%;
   background: var(--color-dark-gray);
@@ -237,36 +242,32 @@ transition: all 0.3s ease;
 /* Mobile Menu Hidden by Default */
 .nav-menu {
   display: flex;
-  justify-content: space-between;
+  gap: 30px;
   align-items: center;
 }
 
 @media (max-width: 768px) {
-  .hamburger {
-    display: flex;
-  }
-
+  /* Hide nav items until hamburger is opened */
   .nav-menu {
-    position: absolute;
-    top: 70px;
-    left: 0;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.95);
+    display: none;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
     padding: 30px 0;
-    display: none;
+    gap: 20px;
   }
 
   .nav-menu.active {
     display: flex;
   }
 
-  .nav-left, .nav-right {
-    flex-direction: column;
-    gap: 20px;
+  .hamburger {
+    display: flex;
   }
 }
 

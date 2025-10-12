@@ -21,36 +21,35 @@
 
     <!-- Header -->
     <header>
-      <nav class="container">
+        <nav class="container">
+        <div class="nav-left">
+        <a href="#">Home</a>
+        <a href="#">Sessions</a>
+        <a href="#">More</a>
+        <a href="#" class="btn-outline">Contact</a>
+        </div>
+        
+        
         <div class="logo">
-          <a href="index.html">
-            <div class="logo-placeholder">REBEL HOUSE</div>
-          </a>
+        <a href="#">
+        <div class="logo-placeholder">REBEL HOUSE</div>
+        </a>
         </div>
-    
-        <!-- Hamburger Menu Icon -->
+        
+        
+        <div class="nav-right">
+        <a href="#" class="btn-outline">Sign in</a>
+        <a href="#" class="btn-primary">Register</a>
+        </div>
+        
+        
         <div class="hamburger" id="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
         </div>
-    
-        <!-- Navigation Links -->
-        <div class="nav-menu" id="nav-menu">
-          <div class="nav-left">
-            <a href="index.html">Home</a>
-            <a href="dashboard.html">Sessions</a>
-            <a href="book-buy.html">More</a>
-            <a href="contact.html" class="btn-outline">Contact</a>
-          </div>
-          <div class="nav-right">
-            <a href="dashboard.html" class="btn-outline">Sign in</a>
-            <a href="dashboard.html" class="btn-primary">Register</a>
-          </div>
-        </div>
-      </nav>
+        </nav>
     </header>
-
 
     <!-- Hero Section -->
     <section class="hero">
@@ -379,15 +378,15 @@ window.addEventListener('resize', () => {
 
 // Initialize
 updateSlider();
-    
-  const hamburger = document.getElementById('hamburger');
-  const navMenu = document.getElementById('nav-menu');
 
-  hamburger.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-    hamburger.classList.toggle('active');
-  });
+// Hamburger menu
+const hamburger = document.getElementById('hamburger');
+const nav = document.querySelector('nav');
 
+
+hamburger.addEventListener('click', () => {
+nav.classList.toggle('active');
+});
 </script>
 </body>
 </html>

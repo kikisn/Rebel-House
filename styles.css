@@ -713,17 +713,6 @@ nav a:hover {
     align-items: center;
 }
 
-.closing::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(186, 159, 143, 0.85), rgba(51, 62, 33, 0.85));
-    z-index: 1;
-}
-
 .closing-content {
     display: flex;
     justify-content: flex-end;
@@ -733,11 +722,11 @@ nav a:hover {
 .closing-text {
     max-width: 600px;
     color: var(--color-white);
+    text-aign: center;
 }
 
 .closing h2 {
-    color: var(--color-dark-green);
-    text-align: center;
+    color:  var(--color-white);
     margin-bottom: 30px;
 }
 

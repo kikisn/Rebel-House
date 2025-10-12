@@ -125,7 +125,7 @@ p {
     background: var(--color-dark-green);
     color: var(--color-white);
     padding: 12px 0;
-    text-align: center;
+    text-align: left;
 }
 
 .promo-bar .container {

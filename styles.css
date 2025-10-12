@@ -659,6 +659,7 @@ nav a:hover {
 .closing-content {
     display: flex;
     justify-content: flex-end;
+    z-index: 2;
 }
 
 .closing-text {

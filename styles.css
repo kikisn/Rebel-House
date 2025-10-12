@@ -396,8 +396,8 @@ nav a:hover {
     width: 50px;
     height: 50px;
     background: transparent;
-    border: 2px solid var(--color-white);
-    color: var(--color-white);
+    border: 2px solid var(--color-dark-green);
+    color: var(--color-dark-green);
     font-size: 1.5rem;
     cursor: pointer;
     transition: all 0.3s ease;

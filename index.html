@@ -302,5 +302,69 @@
             </div>
         </div>
     </footer>
+
+    <script>
+// Instructor Slider Functionality
+const instructorSlider = document.querySelector('.instructor-slider');
+const prevBtn = document.querySelector('.prev-btn');
+const nextBtn = document.querySelector('.next-btn');
+
+let currentIndex = 0;
+const instructorCards = document.querySelectorAll('.instructor-card');
+const totalInstructors = instructorCards.length;
+
+// Function to get cards per view based on screen size
+function getCardsPerView() {
+    if (window.innerWidth <= 768) return 1;
+    if (window.innerWidth <= 1024) return 2;
+    return 3;
+}
+
+// Update slider position
+function updateSlider() {
+    const cardsPerView = getCardsPerView();
+    const maxIndex = totalInstructors - cardsPerView;
+    
+    // Ensure index is within bounds
+    if (currentIndex < 0) currentIndex = 0;
+    if (currentIndex > maxIndex) currentIndex = maxIndex;
+    
+    // Calculate translateX based on card width and gap
+    const cardWidth = instructorCards[0].offsetWidth;
+    const gap = 40;
+    const translateX = -(currentIndex * (cardWidth + gap));
+    
+    instructorSlider.style.transform = `translateX(${translateX}px)`;
+    instructorSlider.style.transition = 'transform 0.5s ease';
+}
+
+// Next button
+nextBtn.addEventListener('click', () => {
+    const cardsPerView = getCardsPerView();
+    const maxIndex = totalInstructors - cardsPerView;
+    
+    if (currentIndex < maxIndex) {
+        currentIndex++;
+        updateSlider();
+    }
+});
+
+// Previous button
+prevBtn.addEventListener('click', () => {
+    if (currentIndex > 0) {
+        currentIndex--;
+        updateSlider();
+    }
+});
+
+// Reset on window resize
+window.addEventListener('resize', () => {
+    currentIndex = 0;
+    updateSlider();
+});
+
+// Initialize
+updateSlider();
+</script>
 </body>
 </html>

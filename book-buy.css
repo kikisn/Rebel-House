@@ -131,6 +131,8 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
+    padding: 0 20px;
 }
 
 .nav-left, .nav-right {
@@ -179,6 +181,43 @@ nav a:hover {
     transform: scale(1.02);
 }
 
+/* Hamburger Icon */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 22px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.hamburger span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background: var(--color-dark-green);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Hide mobile-only items on desktop */
+.mobile-only {
+    display: none;
+}
+
 /* Horizontal Scroll */
 .horizontal-scroll-wrapper {
     display: flex;
@@ -218,6 +257,24 @@ nav a:hover {
     width: 100%;
     gap: 60px;
     align-items: center;
+}
+
+/* Image Placeholders with proper sizing */
+.main-image-placeholder,
+.thumbnail-placeholder,
+.large-image-placeholder,
+.card-icon,
+.card-icon-small {
+    position: relative;
+    overflow: hidden;
+}
+
+.main-image-placeholder img,
+.thumbnail-placeholder img,
+.large-image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 /* Book Panel */
@@ -486,7 +543,7 @@ footer a {
     text-decoration: none;
 }
 
-/* Responsive */
+/* Tablet Responsive */
 @media (max-width: 968px) {
     .panel-content {
         flex-direction: column;
@@ -495,10 +552,13 @@ footer a {
     
     .horizontal-scroll-wrapper {
         height: auto;
+        overflow-x: hidden;
+        scroll-snap-type: none;
     }
     
     .scroll-panel {
-        min-height: 100vh;
+        min-width: 100%;
+        min-height: auto;
         padding: 40px 20px;
     }
     
@@ -509,12 +569,49 @@ footer a {
     .content-card {
         padding: 30px;
     }
+    
+    .main-image-placeholder {
+        height: 300px;
+    }
+    
+    .thumbnail-row {
+        flex-wrap: wrap;
+    }
+    
+    .thumbnail-placeholder {
+        min-width: calc(33.333% - 10px);
+    }
+    
+    .large-image-placeholder {
+        min-height: 400px;
+    }
+    
+    .sidebar-card {
+        padding: 30px;
+    }
+    
+    .scroll-indicator {
+        display: none;
+    }
 }
 
+/* Mobile Styles */
 @media (max-width: 768px) {
+    header {
+        position: relative;
+        background: var(--color-white);
+    }
+    
     nav {
-        flex-direction: column;
-        gap: 20px;
+        padding: 10px 20px;
+    }
+    
+    .hamburger {
+        display: flex;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
     }
     
     .logo {
@@ -522,13 +619,224 @@ footer a {
         transform: none;
     }
     
-    .nav-left, .nav-right {
-        gap: 15px;
+    .logo-placeholder {
+        width: 140px;
+        height: 50px;
+        font-size: 0.8rem;
+    }
+    
+    .nav-left {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: var(--color-dark-gray);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        padding: 60px 20px;
+    }
+    
+    .nav-left.active {
+        transform: translateX(0);
+    }
+    
+    .nav-right {
+        display: none;
+    }
+    
+    /* Show mobile-only items in mobile menu */
+    .mobile-only {
+        display: inline-block;
+    }
+    
+    .nav-left a {
+        color: var(--color-white);
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    
+    .nav-left .btn-outline {
+        border-color: var(--color-white);
+        color: var(--color-white);
+        padding: 12px 30px;
+        font-size: 1rem;
+    }
+    
+    .nav-left .btn-outline:hover {
+        background: var(--color-white);
+        color: var(--color-dark-gray);
+    }
+    
+    .nav-left .btn-primary {
+        padding: 12px 30px;
+        font-size: 1rem;
+        background: var(--color-white);
+        color: var(--color-dark-gray);
+        border-color: var(--color-white);
+    }
+    
+    /* Horizontal scroll fixes for mobile */
+    .horizontal-scroll-wrapper {
+        display: block;
+        height: auto;
+        overflow-x: visible;
+    }
+    
+    .scroll-panel {
+        min-width: 100%;
+        height: auto;
+        padding: 30px 15px;
+    }
+    
+    .panel-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .panel-left,
+    .panel-right,
+    .panel-main,
+    .panel-sidebar,
+    .panel-left-wide,
+    .panel-right-narrow {
+        width: 100%;
+    }
+    
+    .main-image-placeholder {
+        height: 250px;
+    }
+    
+    .thumbnail-row {
+        gap: 10px;
+    }
+    
+    .thumbnail-placeholder {
+        height: 80px;
+        min-width: calc(33.333% - 7px);
+    }
+    
+    .content-card,
+    .sidebar-card {
+        padding: 25px;
+    }
+    
+    .large-image-placeholder {
+        min-height: 300px;
+    }
+    
+    h2 {
+        font-size: 1.4rem;
+    }
+    
+    h3 {
+        font-size: 1.2rem;
+    }
+    
+    h4 {
+        font-size: 1rem;
+    }
+    
+    .content-card p,
+    .sidebar-card p {
+        font-size: 0.95rem;
+    }
+    
+    .membership-item {
+        padding: 15px;
+    }
+    
+    .membership-item .price {
+        font-size: 1.1rem;
+    }
+    
+    .small-card {
+        padding: 20px;
+    }
+    
+    .small-card:hover {
+        transform: none;
+    }
+    
+    .btn-primary,
+    .btn-secondary {
+        padding: 12px 24px;
+        font-size: 0.85rem;
+        width: 100%;
+        text-align: center;
     }
     
     footer .container {
-        flex-direction: column;
+        padding: 0 15px;
+    }
+    
+    .footer-logos {
         gap: 15px;
-        text-align: center;
+    }
+    
+    .logo-badge {
+        width: 100px;
+        height: 80px;
+    }
+    
+    .logo-badge span {
+        font-size: 0.65rem;
+    }
+}
+
+/* Extra small mobile devices */
+@media (max-width: 480px) {
+    .logo-placeholder {
+        width: 120px;
+        height: 45px;
+        font-size: 0.7rem;
+    }
+    
+    .scroll-panel {
+        padding: 20px 10px;
+    }
+    
+    .main-image-placeholder {
+        height: 200px;
+    }
+    
+    .large-image-placeholder {
+        min-height: 250px;
+    }
+    
+    .thumbnail-placeholder {
+        height: 60px;
+    }
+    
+    .content-card,
+    .sidebar-card,
+    .small-card {
+        padding: 20px;
+    }
+    
+    h2 {
+        font-size: 1.2rem;
+    }
+    
+    h3 {
+        font-size: 1.1rem;
+    }
+    
+    .membership-item {
+        padding: 12px;
+    }
+    
+    .logo-badge {
+        width: 80px;
+        height: 70px;
+    }
+    
+    .logo-badge span {
+        font-size: 0.6rem;
     }
 }

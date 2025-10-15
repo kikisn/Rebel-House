@@ -434,7 +434,21 @@ nav a:hover {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 60px;
-    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .company-info-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .company-info-content .company-info-image {
+        order: 2;
+    }
+    
+    .company-info-content .company-info-text {
+        order: 1;
+    }
 }
 
 .company-info-image {

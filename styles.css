@@ -233,7 +233,7 @@ nav a:hover {
     display: block;
     height: 3px;
     width: 100%;
-    background: var(--color-white);
+    background: var(--color-dark-green);
     border-radius: 2px;
     transition: all 0.3s ease;
 }
@@ -266,7 +266,7 @@ nav a:hover {
 @media (max-width: 768px) {
     header {
         position: relative;
-        background: var(--color-dark-gray);
+        background: var(--color-white);
     }
     
     nav {

@@ -189,7 +189,8 @@ nav a:hover {
 
 .sidebar-nav {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
+    align-items: flex-start;
 }
 
 .nav-item {

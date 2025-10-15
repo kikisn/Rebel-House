@@ -766,6 +766,13 @@ nav a:hover {
     margin-bottom: 20px;
 }
 
+.service-image-placeholder img {
+    width: 250px;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
 .service-card h3 {
     color: var(--color-dark-green);
     padding: 0 20px;

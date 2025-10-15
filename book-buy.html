@@ -14,17 +14,25 @@
     <!-- Header -->
     <header>
         <nav class="container">
-            <div class="nav-left">
-                <a href="index.html">Home</a>
-                <a href="dashboard.html">Sessions</a>
-                <a href="book-buy.html">More</a>
-                <a href="contact.html" class="btn-outline">Contact</a>
-            </div>
-            
             <div class="logo">
                 <a href="index.html">
                     <div class="logo-placeholder">REBEL HOUSE</div>
                 </a>
+            </div>
+            
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <div class="nav-left" id="navMenu">
+                <a href="index.html">Home</a>
+                <a href="dashboard.html">Sessions</a>
+                <a href="book-buy.html">More</a>
+                <a href="contact.html" class="btn-outline">Contact</a>
+                <a href="dashboard.html" class="btn-outline mobile-only">Sign in</a>
+                <a href="dashboard.html" class="btn-primary mobile-only">Register</a>
             </div>
             
             <div class="nav-right">
@@ -40,11 +48,19 @@
         <section class="scroll-panel book-panel">
             <div class="panel-content">
                 <div class="panel-left">
-                    <div class="main-image-placeholder"></div>
+                    <div class="main-image-placeholder">
+                        <img src="images/book-class-main.webp" alt="Fitness class at Rebel House">
+                    </div>
                     <div class="thumbnail-row">
-                        <div class="thumbnail-placeholder"></div>
-                        <div class="thumbnail-placeholder"></div>
-                        <div class="thumbnail-placeholder"></div>
+                        <div class="thumbnail-placeholder">
+                            <img src="images/book-class-thumb1.webp" alt="Indoor cycling">
+                        </div>
+                        <div class="thumbnail-placeholder">
+                            <img src="images/book-class-thumb2.webp" alt="HIIT workout">
+                        </div>
+                        <div class="thumbnail-placeholder">
+                            <img src="images/book-class-thumb3.webp" alt="Yoga session">
+                        </div>
                     </div>
                 </div>
                 <div class="panel-right">
@@ -62,7 +78,9 @@
         <section class="scroll-panel memberships-panel">
             <div class="panel-content">
                 <div class="panel-main">
-                    <div class="large-image-placeholder"></div>
+                    <div class="large-image-placeholder">
+                        <img src="images/memberships-hero.webp" alt="Rebel House memberships">
+                    </div>
                 </div>
                 <div class="panel-sidebar">
                     <div class="sidebar-card">
@@ -106,7 +124,9 @@
         <section class="scroll-panel buy-panel">
             <div class="panel-content">
                 <div class="panel-left-wide">
-                    <div class="large-image-placeholder"></div>
+                    <div class="large-image-placeholder">
+                        <img src="images/shop-hero.webp" alt="Rebel House merchandise">
+                    </div>
                 </div>
                 <div class="panel-right-narrow">
                     <div class="content-cards-stack">
@@ -172,6 +192,24 @@
     </footer>
 
     <script>
+        // Hamburger menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link
+        const navLinks = navMenu.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+        
         // Simple scroll indicator update
         const scrollWrapper = document.querySelector('.horizontal-scroll-wrapper');
         const dots = document.querySelectorAll('.dot');
